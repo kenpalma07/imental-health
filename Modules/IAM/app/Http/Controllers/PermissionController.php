@@ -9,17 +9,21 @@ use Modules\Core\Http\Controllers\CoreController as Controller;
 use Modules\IAM\Models\Permission;
 use Modules\IAM\Http\Requests\PermissionFormRequest;
 use Illuminate\Http\RedirectResponse;
+use Modules\IAM\Services\PermissionService;
 
 class PermissionController extends Controller
 {
+    private PermissionService $permissionService;
     /**
      * Create the controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PermissionService $permissionService)
     {
         $this->authorizeResource(Permission::class, 'permission');
+
+        $this->permissionService = $permissionService;
     }
 
     /**
@@ -30,26 +34,10 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->perPage ?? self::ITEMS_PER_PAGE;
+        $permissions = $this->permissionService->index();
 
-        return Inertia::render('IAM::Permission/index', [
-            'perPage' => (int) $perPage,
-            'filters' => $request->all('search'),
-            'permissions' => Permission::query()->select(
-                'id',
-                'name',
-                'module',
-                'guard_name'
-            )->get(),
-            'columns' => [
-                'id',
-                'name',
-                'module',
-                'guard_name',
-            ],
-            'can' => [
-                'create' => Auth::user()->can('create', Permission::class),
-            ],
+        return inertia('IAM::Permission/index', [
+            'permissions' => $permissions
         ]);
     }
 

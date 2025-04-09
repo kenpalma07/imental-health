@@ -23,14 +23,7 @@ import TableToolbar from '@/components/data-table/data-table-toolbar.jsx';
 import { DataTableViewOptions } from '@/components/data-table/data-table-view-options';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 import useDebouncedSearch from '@/hooks/use-debounced-search';
@@ -116,8 +109,6 @@ export default function User() {
             id: 'actions',
             enableHiding: false,
             cell: ({ row }) => {
-                const payment = row.original;
-
                 return (
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -127,11 +118,9 @@ export default function User() {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>Copy payment ID</DropdownMenuItem>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>View customer</DropdownMenuItem>
-                            <DropdownMenuItem>View payment details</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 );

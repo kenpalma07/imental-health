@@ -10,17 +10,22 @@ use Modules\IAM\Models\Permission;
 use Modules\IAM\Models\Role;
 use Modules\IAM\Http\Requests\RoleFormRequest;
 use Modules\Core\Http\Controllers\CoreController as Controller;
+use Modules\IAM\Services\RoleService;
 
 class RoleController extends Controller
 {
+    private RoleService $roleService;
+
     /**
      * Create the controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(RoleService $roleService)
     {
         $this->authorizeResource(Role::class, 'role');
+
+        $this->roleService = $roleService;
     }
 
     /**
@@ -31,24 +36,10 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->perPage ?? self::ITEMS_PER_PAGE;
+        $roles = $this->roleService->index();
 
-        return Inertia::render('IAM::Role/index', [
-            'perPage' => (int) $perPage,
-            'filters' => $request->all('search'),
-            'roles' => Role::query()->select(
-                'id',
-                'name',
-                'guard_name',
-            )->get(),
-            'columns' => [
-                'id',
-                'name',
-                'guard_name'
-            ],
-            'can' => [
-                'create' => Auth::user()->can('create', Role::class),
-            ],
+        return inertia('IAM::Role/index', [
+            'roles' => $roles
         ]);
     }
 

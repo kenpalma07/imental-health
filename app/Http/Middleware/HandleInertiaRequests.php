@@ -46,10 +46,17 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'ziggy' => fn (): array => [
+            'filters' => [
+                'search'  => $request->query('search'),
+                'limit'   => $request->query('limit'),
+                'col'     => $request->query('col'),
+                'sort'    => $request->query('sort'),
+                'filters' => $request->query('filters'),
+            ],
+            /* 'ziggy' => fn (): array => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
-            ]
+            ] */
         ];
     }
 }

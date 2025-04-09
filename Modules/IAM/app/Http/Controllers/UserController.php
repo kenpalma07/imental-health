@@ -2,6 +2,7 @@
 
 namespace Modules\IAM\Http\Controllers;
 
+use Modules\IAM\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -12,17 +13,20 @@ use Modules\IAM\Models\Role;
 use Modules\IAM\Models\User;
 use Modules\IAM\Http\Requests\UserFormRequest;
 use Illuminate\Http\RedirectResponse;
+use Modules\IAM\Http\Resources\RoleResource;
 
 class UserController extends Controller
 {
+    protected UserService $userService;
     /**
      * Create the controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->authorizeResource(User::class, 'user');
+        $this->userService = $userService;
     }
 
     /**
@@ -33,21 +37,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage = $request->perPage ?? self::ITEMS_PER_PAGE;
+        $users = $this->userService->index();
+        $roles = Role::all();
 
-        $roles = Role::all('id', 'name');
+        /* return Inertia::render('IAM::User/index', [
+            'users' => $users,
+            'roles' => RoleResource::collection($roles),
+        ]); */
 
-        return Inertia::render('IAM::User/index', [
-            'perPage' => (int) $perPage,
-            'filters' => $request->all('search'),
-            'users' => User::with('roles')->select('id', 'name_suffix', 'first_name', 'middle_name', 'last_name', 'username', 'email', 'is_approve', 'is_lock', 'is_active')->get(),
-            'columns' => ['full_name', 'username', 'email', 'is_approve', 'is_lock', 'is_active'],
-            'can' => [
-                'create' => Auth::user()->can('create', User::class),
-                'assignRole' => Auth::user()->can('assignRole', User::class),
-            ],
-            'check' => Auth::user()->hasRole('Administrator') ?: false,
-            'roles' => $roles,
+        RoleResource::withoutWrapping();
+
+        return inertia('IAM::User/index', [
+            'users' => $users,
+            'roles' => RoleResource::collection($roles),
         ]);
     }
 

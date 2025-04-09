@@ -23,6 +23,12 @@ npm install @tanstack/react-table
 npx shadcn@latest add form
 npx shadcn@latest add toast
 
+npx shadcn@latest add popover
+
+npx shadcn@latest add command
+
+
+
 npm i @radix-ui/react-icons
 
 npm i tailwind-merge
@@ -38,6 +44,7 @@ npm install zod
 
 https://ui.shadcn.com/
 https://www.radix-ui.com/icons
+https://github.com/raprmdn/laravel-inertia-datatable
 
 
 ## Deployment

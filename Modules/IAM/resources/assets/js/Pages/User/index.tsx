@@ -14,7 +14,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, PlusCircleIcon } from 'lucide-react';
 import * as React from 'react';
 
 import { DataTablePagination } from '@/components/data-table/data-table-pagination';
@@ -161,7 +161,7 @@ export default function User() {
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Users" />
             <div className="w-full space-y-4 p-4">
-                <div className="flex items-center">
+                <div className="flex items-center gap-2">
                     <TableToolbar
                         placeholder="Search user"
                         search={params?.search}
@@ -169,6 +169,10 @@ export default function User() {
                         setParams={setParams}
                         setTimeDebounce={setTimeDebounce}
                     />
+                    <Button className="h-8 px-2 lg:px-3">
+                        <PlusCircleIcon className="h-4 w-4" />
+                        Add
+                    </Button>
                     {/* <Input
                         placeholder="Filter user..."
                         value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}

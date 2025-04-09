@@ -55,6 +55,12 @@ cd to folder
 
 composer install
 
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan 
+
 php artisan migrate
 
 php artisan module:seed IAM

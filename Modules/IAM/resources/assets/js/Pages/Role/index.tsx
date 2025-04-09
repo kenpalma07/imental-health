@@ -185,7 +185,14 @@ export default function Role() {
                         </TableBody>
                     </Table>
                 </div>
-                <DataTablePagination table={table} params={params} setParams={setParams} setTimeDebounce={setTimeDebounce} />
+                <DataTablePagination
+                    table={table}
+                    params={params}
+                    setParams={setParams}
+                    setTimeDebounce={setTimeDebounce}
+                    links={links}
+                    meta={meta}
+                />
                 {/* <div className="flex items-center justify-end space-x-2 py-4">
                         <div className="text-muted-foreground flex-1 text-sm">
                             {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.

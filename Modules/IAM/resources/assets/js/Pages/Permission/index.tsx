@@ -95,7 +95,7 @@ export default function Permission() {
             accessorKey: 'guard_name',
             header: ({ column }) => (
                 <TableSortHeader
-                    title="guard Name"
+                    title="Guard Name"
                     onClick={() => {
                         setTimeDebounce(50);
                         sort('guard_name');
@@ -199,7 +199,14 @@ export default function Permission() {
                         </TableBody>
                     </Table>
                 </div>
-                <DataTablePagination table={table} params={params} setParams={setParams} setTimeDebounce={setTimeDebounce} />
+                <DataTablePagination
+                    table={table}
+                    params={params}
+                    setParams={setParams}
+                    setTimeDebounce={setTimeDebounce}
+                    links={links}
+                    meta={meta}
+                />
                 {/* <div className="flex items-center justify-end space-x-2 py-4">
                         <div className="text-muted-foreground flex-1 text-sm">
                             {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.

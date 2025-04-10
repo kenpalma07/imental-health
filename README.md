@@ -1,3 +1,10 @@
+## Requirements
+
+PHP 8.3 or higher
+[Composer](https://getcomposer.org/)
+[Node version 18 or higher](https://nodejs.org/en/download)
+
+
 ## PHP Packages Used
 
 ### Laravel Permission
@@ -41,6 +48,7 @@
 [Laravel Eloquent Filtering](https://docs.eloquentfiltering.com/v2/introduction/eloquent-filtering)
 
 `composer require indexzer0/eloquent-filtering`
+
 
 ## Javascript Packages
 

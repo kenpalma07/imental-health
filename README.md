@@ -59,7 +59,7 @@ npx shadcn@latest add table
 npm install @tanstack/react-table
 ```
 
-`npx shadcn@latest add form'
+`npx shadcn@latest add form`
 
 `npx shadcn@latest add toast`
 

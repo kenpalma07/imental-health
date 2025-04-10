@@ -2,8 +2,9 @@
 
 ### Laravel Permission
 
-[https://spatie.be/docs/laravel-permission/v6/introduction]
-composer require spatie/laravel-permission
+[laravel-permission](https://spatie.be/docs/laravel-permission/v6/introduction)
+
+`composer require spatie/laravel-permission`
 
 ### Laravel CSP
 [https://github.com/spatie/laravel-csp]

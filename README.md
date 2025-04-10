@@ -54,8 +54,10 @@
 
 [Shadcn React UI](https://ui.shadcn.com/)
 
-``npx shadcn@latest add table
-npm install @tanstack/react-table``
+```
+npx shadcn@latest add table
+npm install @tanstack/react-table
+```
 
 `npx shadcn@latest add form'
 
@@ -75,6 +77,7 @@ npm install @tanstack/react-table``
 
 `npm install zod`
 
+
 ## Referrences
 
 [Frontend UI (shadcn)](https://ui.shadcn.com)
@@ -83,9 +86,10 @@ npm install @tanstack/react-table``
 
 [Sample Laravel Implementation](https://github.com/raprmdn/laravel-inertia-datatable)
 
+
 ## Deployment
 
-``
+```
 git clone git@github.com:doh-ihomis/laravel-react-starterkit.git
 
 cd to laravel-react-starterkit
@@ -105,4 +109,4 @@ php artisan module:seed IAM
 npm install
 
 npm run dev
-``
+```

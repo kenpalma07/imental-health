@@ -112,3 +112,9 @@ npm install
 
 npm run dev
 ```
+
+
+```
+email: admin@example.com
+password: 4dm1n1str4t0r
+```

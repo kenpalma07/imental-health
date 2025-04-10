@@ -4,6 +4,9 @@ PHP 8.3 or higher
 [Composer](https://getcomposer.org/)
 [Node version 18 or higher](https://nodejs.org/en/download)
 
+PHP Extension
+sodium library
+
 
 ## PHP Packages Used
 

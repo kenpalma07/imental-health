@@ -30,8 +30,8 @@ createInertiaApp({
                 "../../Modules/*/resources/assets/js/**/*.tsx"
             );
         } else {
-            path = `./pages/${name}.tsx`;
-            pages = import.meta.glob("./pages/**/*.tsx");
+            path = `./Pages/${name}.tsx`;
+            pages = import.meta.glob("./Pages/**/*.tsx");
         }
 
         return resolvePageComponent(path, pages);

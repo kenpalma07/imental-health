@@ -32,8 +32,8 @@ createServer((page) =>
                     "../../Modules/*/resources/assets/js/**/*.tsx"
                 );
             } else {
-                path = `./pages/${name}.vue`;
-                pages = import.meta.glob("./pages/**/*.tsx");
+                path = `./Pages/${name}.vue`;
+                pages = import.meta.glob("./Pages/**/*.tsx");
             }
     
             return resolvePageComponent(path, pages);

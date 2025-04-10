@@ -92,11 +92,13 @@ npm install @tanstack/react-table
 ```
 git clone git@github.com:doh-ihomis/laravel-react-starterkit.git
 
-cd to laravel-react-starterkit
+cd laravel-react-starterkit
 
 composer install
 
 cp .env.example .env
+
+# Update database credentials
 
 php artisan key:generate
 

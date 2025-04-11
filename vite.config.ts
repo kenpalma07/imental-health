@@ -7,6 +7,9 @@ import { defineConfig } from 'vite';
 import { viteObfuscateFile } from "vite-plugin-obfuscator";
 
 export default defineConfig({
+    server: {
+        host: 'localhost',
+    },
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
